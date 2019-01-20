@@ -2,7 +2,8 @@
     "name": "@monokit/api",
     "version": "0.0.1",
     "scripts": {
-        "dev": "nodemon --watch src/ --exec ts-node src/index.ts"
+        "dev": "nodemon --watch src/ --exec ts-node src/index.ts",
+        "test": "ts-node --project tsconfig.json ../../node_modules/tape/bin/tape \"test/**/*.test.ts\" | tap-spec"
     },
     "dependencies": {
         "koa": "^2.6.2",
@@ -11,7 +12,12 @@
     "devDependencies": {
         "@types/koa": "^2.0.48",
         "@types/koa-router": "^7.0.38",
+        "@types/supertest": "^2.0.7",
+        "@types/tape": "^4.2.33",
         "nodemon": "^1.18.9",
+        "supertest": "^3.4.1",
+        "tap-spec": "^5.0.0",
+        "tape": "^4.9.2",
         "ts-node": "^7.0.1",
         "typescript": "^3.2.4"
     }

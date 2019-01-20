@@ -35,7 +35,7 @@ ENV PATH /home/node/app/node_modules/.bin:$PATH
 
 USER node
 
-ENTRYPOINT [ "./scripts/api_entrypoint.sh" ]
+ENTRYPOINT [ "./scripts/api.sh" ]
 
 
 

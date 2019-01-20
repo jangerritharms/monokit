@@ -11,7 +11,7 @@ services:
     volumes:
       - "yarn:/home/node/.cache/yarn"
       - "./yarn.lock:/home/node/app/yarn.lock"
-      - "./scripts/api_entrypoint.sh:/home/node/app/scripts/api_entrypoint.sh"
+      - "./scripts/api.sh:/home/node/app/scripts/api.sh"
       - "./packages/api/src:/home/node/app/packages/api/src"
       - "./packages/api/tsconfig.json:/home/node/app/packages/api/tsconfig.json"
     command: yarn workspace @monokit/api dev
