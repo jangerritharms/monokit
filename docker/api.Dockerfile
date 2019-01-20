@@ -51,6 +51,7 @@ FROM test AS build
 RUN yarn workspace @monokit/api build
 
 
-FROM node:10.15.0-alpine as production
+FROM dev as production
 
-COPY --from=build /home/node/app/api/dist /home/node/app/packages/api/dist
+COPY --from=build /home/node/app/packages/api/dist /home/node/app/packages/api/dist
+RUN yarn install --frozen-lockfile --no-cache --production

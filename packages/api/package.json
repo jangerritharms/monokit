@@ -2,8 +2,10 @@
     "name": "@monokit/api",
     "version": "0.0.1",
     "scripts": {
+        "build": "tsc -b",
         "dev": "nodemon --watch src/ --exec ts-node src/index.ts",
-        "test": "ts-node --project tsconfig.json ../../node_modules/tape/bin/tape \"test/**/*.test.ts\" | tap-spec"
+        "test": "ts-node --project tsconfig.json ../../node_modules/tape/bin/tape \"test/**/*.test.ts\" | tap-spec",
+        "production": "node dist/index.js"
     },
     "dependencies": {
         "koa": "^2.6.2",
