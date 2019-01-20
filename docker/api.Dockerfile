@@ -43,6 +43,7 @@ FROM dev AS test
 
 RUN yarn --frozen-lockfile --no-cache
 COPY packages/api /home/node/app/packages/api
+COPY scripts/api.sh /home/node/app/scripts/api.sh
 
 
 

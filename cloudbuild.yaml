@@ -1,16 +1,16 @@
 steps:
-  - name: 'docker/compose:1.23.0'
-    args: ['-f', 'docker-compose.yml', '-f', 'docker-compose.test.yml', 'up', 'api']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-f', 'docker/api.Dockerfile', '--target', 'production', '-t', 'gcr.io/monokit/api:latest', '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ["push", "gcr.io/monokit/api:latest"]
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args:
-    - 'set'
-    - 'image'
-    - 'monokit/deployment'
-    - 'my-container=gcr.io/monokit/api:latest'
+- name: 'docker/compose:1.23.0'
+  args: ['-f', 'docker-compose.yml', '-f', 'docker-compose.test.yml', 'up', 'api']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f', 'docker/api.Dockerfile', '--target', 'production', '-t', 'gcr.io/monokit/api:latest', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/monokit/api:latest"]
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - 'set'
+  - 'image'
+  - 'monokit/deployment'
+  - 'my-container=gcr.io/monokit/api:latest'
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=europe-west-4a'
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west4-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=your-first-cluster-1'
