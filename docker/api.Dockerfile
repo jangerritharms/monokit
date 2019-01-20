@@ -43,7 +43,6 @@ FROM dev AS test
 
 RUN yarn --frozen-lockfile --no-cache
 COPY packages/api /home/node/app/packages/api
-COPY scripts/api.sh /home/node/app/scripts/api.sh
 
 
 
@@ -54,5 +53,6 @@ RUN yarn workspace @monokit/api build
 
 FROM dev as production
 
+COPY scripts/api.sh /home/node/app/scripts/api.sh
 COPY --from=build /home/node/app/packages/api/dist /home/node/app/packages/api/dist
 RUN yarn install --frozen-lockfile --no-cache --production
