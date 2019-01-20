@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+      target: dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - "yarn:/home/node/.cache/yarn"
+      - "./yarn.lock:/home/node/app/yarn.lock"
+      - "./scripts/api_entrypoint.sh:/home/node/app/scripts/api_entrypoint.sh"
+      - "./packages/api/src:/home/node/app/packages/api/src"
+      - "./packages/api/tsconfig.json:/home/node/app/packages/api/tsconfig.json"
+    command: yarn workspace @monokit/api dev
+    
+volumes:
+  yarn:    
