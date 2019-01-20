@@ -7,10 +7,11 @@ steps:
   args: ["push", "gcr.io/monokit/api:latest"]
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
-  - 'set'
-  - 'image'
-  - 'monokit/deployment'
-  - 'my-container=gcr.io/monokit/api:latest'
+  - set
+  - image
+  - deployment
+  - 'monokit-deployment'
+  - 'monokit-container=gcr.io/monokit/api:latest'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west4-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=your-first-cluster-1'
